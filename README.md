@@ -6,6 +6,8 @@
 * https://segmentfault.com/a/1190000004123048
 * https://segmentfault.com/a/1190000009909817
 * https://www.cnblogs.com/apexchu/p/4193117.html
+* https://github.com/wuxu92/PHP7-Reference-cn
+* https://mp.weixin.qq.com/s?__biz=MzIwNDExMjIzNA==&mid=401084310&idx=1&sn=82e16e3096862fc2ca460072bd7350d7&scene=23&srcid=1204VvYIHoePMaPt2VWSNdsh#rd
 
 # error
 * 源码下载不全，信息丢失
@@ -66,8 +68,8 @@ make: *** [buildmk.stamp] Error 1
 --with-curl \
 --with-jpeg-dir \
 --with-freetype-dir \
---enable-opcache
-
+--enable-opcache \
+--enable-bcmath \
 ```
 * make -j 2
 * make install
