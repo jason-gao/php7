@@ -44,7 +44,7 @@ make install
 ```
 wget -c https://github.com/php-memcached-dev/php-memcached/archive/v3.0.4.tar.gz -O memcachedv3.0.4.tar.gz
 tar -zxvf memcachedv3.0.4.tar.gz
-cd php-memcaced-3.0.4
+cd php-memcached-3.0.4
 /usr/local/php7.2.1/bin/phpize
 ./configure --with-libmemcached-dir=/usr/local/libmemcached/  --with-php-config=/usr/local/php7.2.1/bin/php-config --enable-memcached-sasl
 make -j 2
@@ -74,7 +74,7 @@ make install
 ```
 * Installing shared extensions:     /usr/local/php7.2.1/lib/php/extensions/no-debug-non-zts-20170718/
 * vim /usr/local/php7.2.1/etc/php.ini
-* extension=memcached.so
+* extension=redis.so
 * service php-fpm7.2.1 restart 重启php-fpm，不然对web网站不起作用
 
 # bcmath扩展 php源码包里有
@@ -92,5 +92,16 @@ extension=bcmath.so
 service php-fpm7.2.1 restart 重启php-fpm，不然对web网站不起作用
 
 ```
+* 如果编译时候加了--enable-bcmath，则这里不需要再编译
+* 否则会报PHP Startup: Invalid library (maybe not a PHP library) 'bcmath.so' in <b>Unknown</b> on line
+* php.ini里的extension=bcmath.so去掉即可，因为已经默认加载了
 
+* 加到php.ini里
+```
+extension=memcached.so
+extension=memcache.so
+extension=redis.so
+extension=bcmath.so
+
+```
   

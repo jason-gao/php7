@@ -25,6 +25,18 @@ make: *** [buildmk.stamp] Error 1
 * upgrade autoconf 2.63->2.64
 * http://blog.csdn.net/a657941877/article/details/17173193
 * ftp://ftp.gnu.org/gnu/autoconf/
+```
+* 查看当前版本
+    * rpm -qf /usr/bin/autoconf 
+* 卸载当前版本
+    * rpm -e --nodeps autoconf-2.63
+* cd /usr/local/src    
+* wget -c http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz
+    * tar -zxvf autoconf-2.69.tar.gz
+    * cd autoconf-2.69
+    * ./configure --prefix=/usr
+    * make && make install
+```
 ## ------------------------------------------------------------
 
 
@@ -70,6 +82,7 @@ make: *** [buildmk.stamp] Error 1
 --with-freetype-dir \
 --enable-opcache \
 --enable-bcmath \
+
 ```
 * make -j 2
 * make install
@@ -116,7 +129,15 @@ Installing PDO headers:           /usr/local/php7.2.1/include/php/ext/pdo/
 * chmod +x /etc/init.d/php-fpm7.2.1
 * chkconfig --add php-fpm7.2.1
 * chkconfig php-fpm7.2.1 on
-* service php-fpm7.2.1 start启动fpm
+
+* 如果没安装chkconfig:error:-bash: chkconfig: command not found
+* 安装chkconfig https://github.com/jason-gao/docs/blob/master/linux/chkconfig.md
+* /sbin/service php-fpm7.2.1 start启动fpm
+
+* 添加个软链：ln -s /usr/local/php7.2.1/bin/php /usr/bin/php721
+* 直接可以php721访问php
+* php721 -m
+* php721 -v
 
 
 ## benchmark
