@@ -16,7 +16,8 @@
 * The each() function is deprecated. 
     This message will be suppressed on further calls
     * composer里加载了这个库：nette/http 
-    * 解决办法：https://github.com/nette/http/commit/4667ae05dbf18e3820bfe1d70cbf0a04b83a828e
+    * 解决办法：https://github.com/nette/http/blob/master/src/Http/RequestFactory.php
+    * 使用foreach代替each
     * http://php.net/manual/zh/function.each.php
 
 * Function create_function() is deprecated
@@ -29,9 +30,13 @@
     * https://github.com/jason-gao/SocketLog/commit/c175c51f5bd034674c30368e4fd61851a2d0ac70
     
 * 项目中用到memcache扩展全部改为memcached
+    * php7.2官方没有相应的memcache扩展，建议直接安装memcached扩展
     * 扩展安装参照 extension.md
         
-
+* E_ERROR
+ * 如果有必传参数，调用时候没传,php5.6不会报错，php7.2会报fatal error
+ * Uncaught ArgumentCountError: Too few arguments to function xx::yy(), 
+  2 passed in xx.php on line 948 and exactly 3 expected in xxx.php:1304
     
     
         

@@ -96,12 +96,34 @@ service php-fpm7.2.1 restart 重启php-fpm，不然对web网站不起作用
 * 否则会报PHP Startup: Invalid library (maybe not a PHP library) 'bcmath.so' in <b>Unknown</b> on line
 * php.ini里的extension=bcmath.so去掉即可，因为已经默认加载了
 
+
+# amqp扩展 操作rabitmq
+* https://github.com/pdezwart/php-amqp/releases
+* https://github.com/alanxz/rabbitmq-c/releases
+
+* librabbitmq not found
+* 先安装 librabbitmq
+* yum install librabbitmq-devel
+
+```
+cd /usr/local/src/php7ext
+wget -c https://github.com/pdezwart/php-amqp/archive/v1.9.3.tar.gz
+tar -zxvf v1.9.3.tar.gz
+cd php-amqp-1.9.3
+/usr/local/php7.2.1/bin/phpize
+./configure --with-php-config=/usr/local/php7.2.1/bin/php-config --with-amqp 
+make -j 2
+make install
+
+```
+
 * 加到php.ini里
 ```
 extension=memcached.so
 extension=memcache.so
 extension=redis.so
 extension=bcmath.so
+extension=amqp.so
 
 ```
   
