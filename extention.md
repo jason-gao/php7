@@ -117,7 +117,38 @@ make install
 
 ```
 
-* 加到php.ini里
+# 安装xdebug扩展
+    * https://xdebug.org/download.php
+    - A list of all settings:  http://xdebug.org/docs-settings.php     
+    - A list of all functions: http://xdebug.org/docs-functions.php    
+    - Profiling instructions:  http://xdebug.org/docs-profiling2.php   
+    - Remote debugging:        http://xdebug.org/docs-debugger.php 
+
+* cd /usr/local/src/php7ext
+* wget -c https://xdebug.org/files/xdebug-2.6.0.tgz
+* tar -zxvf xdebug-2.6.0.tgz
+* cd xdebug-2.6.0
+* /usr/local/php7.2.1/bin/phpize
+* ./configure --enable-xdebug --with-php-config=/usr/local/php7.2.1/bin/php-config
+* make
+* make test
+* make install
+* vim /usr/local/php7.2.1/etc/php.ini
+```
+
+[Xdebug]  
+zend_extension="/usr/local/php7.2.1/lib/php/extensions/no-debug-non-zts-20170718/xdebug.so"  
+xdebug.profiler_enable=on   
+xdebug.trace_output_dir="/usr/local/php7.2.1/xdebug/"  
+xdebug.profiler_output_dir="/usr/local/php7.2.1/xdebug/"  
+xdebug.remote_enable=on             
+xdebug.remote_handler=dbgp            
+xdebug.remote_host=192.168.5.118  
+xdebug.remote_port=9999
+ 
+```
+
+* 加到php.ini里 /usr/local/php7.2.1/etc/php.ini
 ```
 extension=memcached.so
 extension=memcache.so
