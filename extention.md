@@ -148,6 +148,36 @@ xdebug.remote_port=9999
  
 ```
 
+# 安装swoole
+    * https://github.com/swoole/swoole-src/archive/v1.10.2.tar.gz
+    * https://github.com/swoole/swoole-src/archive/v2.1.1.tar.gz  (wiki)[https://wiki.swoole.com/]
+    * 2.0 支持协程
+
+## swoole 1.10.2
+* cd /usr/local/src/php7ext
+* wget -c https://github.com/swoole/swoole-src/archive/v1.10.2.tar.gz -O swoole-v1.10.2.tar.gz
+* tar -zxvf swoole-v1.10.2.tar.gz
+* cd swoole-src-1.10.2
+* /usr/local/php7.2.1/bin/phpize
+* ./configure --with-php-config=/usr/local/php7.2.1/bin/php-config
+* make
+* make test
+* make install
+* vim /usr/local/php7.2.1/etc/php.ini     
+
+## swoole 2.1.1
+* cd /usr/local/src/php7ext
+* wget -c https://github.com/swoole/swoole-src/archive/v2.1.1.tar.gz -O swoole-v2.1.1.tar.gz
+* tar -zxvf swoole-v2.1.1.tar.gz
+* cd swoole-src-2.1.1
+* /usr/local/php7.2.1/bin/phpize
+* ./configure --with-php-config=/usr/local/php7.2.1/bin/php-config
+* make -j 2
+* make test
+* make install
+* vim /usr/local/php7.2.1/etc/php.ini   
+
+
 * 加到php.ini里 /usr/local/php7.2.1/etc/php.ini
 ```
 extension=memcached.so
@@ -155,6 +185,6 @@ extension=memcache.so
 extension=redis.so
 extension=bcmath.so
 extension=amqp.so
-
+extension=swoole.so
 ```
   
