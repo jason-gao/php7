@@ -130,7 +130,7 @@ make install
 * cd xdebug-2.6.0
 * /usr/local/php7.2.1/bin/phpize
 * ./configure --enable-xdebug --with-php-config=/usr/local/php7.2.1/bin/php-config
-* make
+* make -j 2
 * make test
 * make install
 * vim /usr/local/php7.2.1/etc/php.ini
@@ -186,5 +186,6 @@ extension=redis.so
 extension=bcmath.so
 extension=amqp.so
 extension=swoole.so
+
 ```
   
