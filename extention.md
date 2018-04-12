@@ -170,15 +170,49 @@ xdebug.remote_port=9999
 * wget -c https://github.com/swoole/swoole-src/archive/v2.1.1.tar.gz -O swoole-v2.1.1.tar.gz
 * tar -zxvf swoole-v2.1.1.tar.gz
 * cd swoole-src-2.1.1
+* /usr/local/php7.2.1/bin/phpize --clean
 * /usr/local/php7.2.1/bin/phpize
-* ./configure --with-php-config=/usr/local/php7.2.1/bin/php-config
+* ./configure --with-php-config=/usr/local/php7.2.1/bin/php-config --enable-async-redis
 * make -j 2
 * make test
 * make install
-* vim /usr/local/php7.2.1/etc/php.ini   
-
+* vim /usr/local/php7.2.1/etc/php.ini
+   
+   * --enable-async-redis question: 
+    * https://www.imooc.com/wenda/detail/387830
+    * --enable-async-redis 依赖hiredis 
+        * error:‘swRedisClient’ has no member named ‘context’
+        * https://github.com/redis/hiredis/releases
+        * https://github.com/redis/hiredis/archive/v0.13.3.tar.gz
+        * cd /usr/local/src/php7ext
+        * wget -c https://github.com/redis/hiredis/archive/v0.13.3.tar.gz -O hiredis-v0.13.3.tar.gz
+        * tar -zxvf hiredis-v0.13.3.tar.gz
+        * cd hiredis-0.13.3/
+        * make
+        * make install
+            ```bash
+              mkdir -p /usr/local/include/hiredis /usr/local/lib
+              cp -a hiredis.h async.h read.h sds.h adapters /usr/local/include/hiredis
+              cp -a libhiredis.so /usr/local/lib/libhiredis.so.0.13
+              cd /usr/local/lib && ln -sf libhiredis.so.0.13 libhiredis.so
+              cp -a libhiredis.a /usr/local/lib
+              mkdir -p /usr/local/lib/pkgconfig
+              cp -a hiredis.pc /usr/local/lib/pkgconfig
+            ```
+        * hiredis默认是装在/usr/local/lib下的
+        * cd /etc/ld.so.conf.d
+        * echo "/usr/local/lib" >> hiredis.conf
+        * ldconfig
+        
+        * 或者
+            * vi ~/.bash_profile
+            * export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+            * source ~/.bash_profile
+            * ldconfig
 
 * 加到php.ini里 /usr/local/php7.2.1/etc/php.ini
+    * .so文件路径 /usr/local/php7.2.1/lib/php/extensions/no-debug-non-zts-20170718/
+    
 ```
 extension=memcached.so
 extension=memcache.so
