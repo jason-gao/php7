@@ -16,8 +16,9 @@
     * 如果是web项目，需要重启php-fpm
 
     * [HugePage]
-    * /sbin/sysctl vm.nr_hugepages=512
-    * cat /proc/meminfo  | grep Huge
+        * /sbin/sysctl -w vm.nr_hugepages=512
+        * cat /proc/meminfo  | grep Huge
+    * 不设置这个会导致waring  Zend OPcache huge_code_pages: mmap(HUGETLB) failed: Cannot allocate memory (12) in Unknown on line 0    
     ```
     ;opcache
     zend_extension=opcache.so

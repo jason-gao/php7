@@ -5,6 +5,8 @@
 * https://github.com/ezyang/htmlpurifier/issues/154
 * https://github.com/ezyang/htmlpurifier/pull/156/files
 * https://github.com/nette/http/commit/4667ae05dbf18e3820bfe1d70cbf0a04b83a828e
+* http://zeyulee.com/php/2017/06/08/upgrade-php7/
+
 
 * E_DEPRECATED
 * http://blog.insight.sensiolabs.com/2017/02/02/deprecations-php-7-2.html

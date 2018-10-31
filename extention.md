@@ -180,6 +180,7 @@ xdebug.remote_port=9999
    
    * --enable-async-redis question: 
     * https://www.imooc.com/wenda/detail/387830
+    * https://wiki.swoole.com/wiki/page/p-redis.html
     * --enable-async-redis 依赖hiredis 
         * error:‘swRedisClient’ has no member named ‘context’
         * https://github.com/redis/hiredis/releases
