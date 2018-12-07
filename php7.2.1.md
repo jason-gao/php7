@@ -144,3 +144,7 @@ Installing PDO headers:           /usr/local/php7.2.1/include/php/ext/pdo/
 * 直接可以php721访问php
 * php721 -m
 * php721 -v
+
+## php.ini时区配置
+* vim /usr/local/php7.2.1/etc/php.ini
+* date.timezone = Asia/Shanghai

@@ -213,6 +213,56 @@ xdebug.remote_port=9999
 
 * 加到php.ini里 /usr/local/php7.2.1/etc/php.ini
     * .so文件路径 /usr/local/php7.2.1/lib/php/extensions/no-debug-non-zts-20170718/
+
+    
+## swoole 4.2.9
+* cd /usr/local/src/php7ext
+* wget -c https://github.com/swoole/swoole-src/archive/v4.2.9.tar.gz -O swoole-v4.2.9.tar.gz
+* tar -zxvf swoole-v4.2.9.tar.gz
+* cd swoole-src-4.2.9
+* /usr/local/php7.2.1/bin/phpize --clean
+* /usr/local/php7.2.1/bin/phpize
+* ./configure --with-php-config=/usr/local/php7.2.1/bin/php-config
+* make clean
+* make ->gcc error
+* make test
+* make install
+* vim /usr/local/php7.2.1/etc/php.ini 
+    ### error
+    * GCC 4.8 or later required
+    * https://gist.github.com/stephenturner/e3bc5cfacc2dc67eca8b
+    * https://github.com/swoole/swoole-src/issues/2064#event-1925303808
+    * https://forum.phalconphp.com/discussion/17595/problem-with-compiled-phalcon-with-php-721
+    
+    ```
+        $ cat /etc/centos-release
+        $ sudo yum install centos-release-scl
+        $ sudo yum install devtoolset-7-toolchain
+        $ scl enable devtoolset-7 bash
+        $ source /opt/rh/devtoolset-7/enable
+        $ gcc --version
+        
+        ...
+    ```
+    
+## <span id="mysqlextension">mysql</span>
+  * php7移除了mysql扩展
+  * http://git.php.net/?p=pecl/database/mysql.git;a=summary
+  * cd /usr/local/src/php7ext
+  * wget -c 'http://git.php.net/?p=pecl/database/mysql.git;a=snapshot;h=386776d22c226f3ac6f003dd31a823c77687cc44;sf=tgz' -O mysql.tar.gz
+  * tar -zxvf mysql.tar.gz
+  * cd mysql-386776d
+  * /usr/local/php7.2.1/bin/phpize --clean
+  * /usr/local/php7.2.1/bin/phpize
+  * ./configure --with-php-config=/usr/local/php7.2.1/bin/php-config --with-mysql=mysqlnd
+  * make clean
+  * make
+  * make test
+  * make install
+  * cd /usr/local/php7.2.1/lib/php/extensions/no-debug-non-zts-20170718/
+  * vim /usr/local/php7.2.1/etc/php.ini 
+  * extension=mysql.so
+  * php721 -m
     
 ```
 extension=memcached.so
@@ -221,6 +271,7 @@ extension=redis.so
 extension=bcmath.so
 extension=amqp.so
 extension=swoole.so
+extension=mysql.so
 
 ```
   

@@ -1,4 +1,4 @@
-* php5.6->php7.2.1
+* php5.6->[php7.2.1](php7.2.1.md)
 
 * https://stackoverflow.com/questions/10687804/how-to-use-spl-autoload-as-autoload-goes-deprecated
 * https://github.com/ezyang/htmlpurifier/pull/156/commits/7da6eb7e3cb709667f913466e5dd673df79427f8
@@ -40,5 +40,7 @@
  * Uncaught ArgumentCountError: Too few arguments to function xx::yy(), 
   2 passed in xx.php on line 948 and exactly 3 expected in xxx.php:1304
     
-    
+* php7移除了mysql扩展
+    * 为了兼容性需要安装mysql扩展
+    * [mysql扩展](extention.md#mysqlextension)
         
