@@ -244,6 +244,49 @@ xdebug.remote_port=9999
         
         ...
     ```
+ 
+## swoole 4.3.1
+* cd /usr/local/src/php7ext
+* wget -c https://github.com/swoole/swoole-src/archive/v4.3.1.tar.gz -O swoole-v4.3.1.tar.gz
+* tar -zxvf swoole-v4.3.1.tar.gz
+* cd swoole-src-4.3.1
+* /usr/local/php7.2.1/bin/phpize --clean
+* /usr/local/php7.2.1/bin/phpize
+* ./configure --with-php-config=/usr/local/php7.2.1/bin/php-config CFLAGS=-fPIC
+* make clean
+* make ->gcc error
+* make test
+* make install
+* - /usr/local/php7.2.1/lib/php/extensions/no-debug-non-zts-20170718/
+* vim /usr/local/php7.2.1/etc/php.ini 
+    ### error
+    * GCC 4.8 or later required
+    * https://gist.github.com/stephenturner/e3bc5cfacc2dc67eca8b
+    * https://github.com/swoole/swoole-src/issues/2064#event-1925303808
+    * https://forum.phalconphp.com/discussion/17595/problem-with-compiled-phalcon-with-php-721
+    * https://docs.lvrui.io/2016/12/12/CentOS6-x%E4%B8%8B%E7%9A%84gcc%E5%8D%87%E7%BA%A7/
+    
+    ```
+        $ cat /etc/centos-release
+        $ sudo yum install centos-release-scl
+        $ sudo yum install devtoolset-7-toolchain
+        $ scl enable devtoolset-7 bash
+        $ source /opt/rh/devtoolset-7/enable
+        $ gcc --version
+        
+        ...
+    ```
+   ### error:
+    /opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/ld: src/core/.libs/error.o: relocation R_X86_64_32 against `.rodata.str1.1' can not be used when making a shared object; recompile with -fPIC
+    
+    system:
+    CentOS release 6.8 (Final) x86_64
+    PHP 7.2.1-dev
+    swoole 4.3.1
+    ->
+    ./configure --with-php-config=/usr/local/php7.2.1/bin/php-config CFLAGS=-fPIC
+    
+    
     
 ## <span id="mysqlextension">mysql</span>
   * php7移除了mysql扩展

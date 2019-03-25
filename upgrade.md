@@ -43,4 +43,11 @@
 * php7移除了mysql扩展
     * 为了兼容性需要安装mysql扩展
     * [mysql扩展](extention.md#mysqlextension)
+    
+* [] operator not supported for strings
+    * https://stackoverflow.com/questions/5879675/problem-with-fatal-error-operator-not-supported-for-strings-in
+    ```
+    $foo = 'foo';
+    $foo[] = 'bar'; // ERROR!
+    ```
         
