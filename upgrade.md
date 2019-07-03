@@ -31,6 +31,12 @@
     * https://stackoverflow.com/questions/48161526/php-7-2-function-create-function-is-deprecated
     * http://blog.insight.sensiolabs.com/2017/02/02/deprecations-php-7-2.html
     * https://github.com/jason-gao/SocketLog/commit/c175c51f5bd034674c30368e4fd61851a2d0ac70
+
+* idn_to_ascii
+  * https://www.php.net/manual/zh/function.idn-to-ascii.php
+  * Deprecated: idn_to_utf8(): INTL_IDNA_VARIANT_2003 is deprecated
+  * solve:
+  * $res1 = idn_to_ascii($domain, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46, $idna_info);
     
 * 项目中用到memcache扩展全部改为memcached
     * php7.2官方没有相应的memcache扩展，建议直接安装memcached扩展
