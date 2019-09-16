@@ -306,6 +306,55 @@ xdebug.remote_port=9999
   * vim /usr/local/php7.2.1/etc/php.ini 
   * extension=mysql.so
   * php721 -m
+  
+  
+## xhprof
+- 官方0.9.4编译不通过
+```text
+/tmp/pear/install/xhprof/extension/xhprof.c:1991: error: ‘zval’ has no member named ‘type’
+make: *** [xhprof.lo] Error 1
+ERROR: `make' failed
+```
+- https://github.com/longxinH/xhprof/ 第三方
+
+- cd /data/soft
+- git clone https://github.com/longxinH/xhprof.git
+- cd xhprof/extension/
+- /usr/local/php7.2.1/bin/phpize
+- ./configure --with-php-config=/usr/local/php7.2.1/bin/php-config
+- make && sudo make install
+- vim /usr/local/php7.2.1/etc/php.ini
+- [xhprof]
+  extension = xhprof.so
+  xhprof.output_dir = /tmp/xhprof721
+- kill -USR2 4416  重启php-fpm
+- php721 -m
+
+- error
+- https://segmentfault.com/a/1190000003509917
+failed to execute cmd: " dot -Tpng". stderr: `sh: dot: command not found '
+- linux-centos
+sudo yum install graphviz
+- mac 
+brew install graphviz
+
+将分析结果放到 xhprof.output_dir
+- 先创建目录 mkdir /tmp/xhprof721 && cd /tmp/xhprof721
+
+```php
+
+$xhprofData = xhprof_disable();
+require '/vagrant/xhprof/xhprof_lib/utils/xhprof_lib.php';
+require '/vagrant/xhprof/xhprof_lib/utils/xhprof_runs.php';
+
+$xhprofRuns = new XHProfRuns_Default();
+$runId = $xhprofRuns->save_run($xhprofData, 'xhprof_test');
+
+echo 'http://localhost/xhprof/xhprof_html/index.php?run=' . $runId . '&source=xhprof_test';
+
+```
+
+  
     
 ```
 extension=memcached.so
@@ -315,6 +364,7 @@ extension=bcmath.so
 extension=amqp.so
 extension=swoole.so
 extension=mysql.so
+extension = xhprof.so
 
 ```
   

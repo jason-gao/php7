@@ -36,6 +36,7 @@
   * https://www.php.net/manual/zh/function.idn-to-ascii.php
   * Deprecated: idn_to_utf8(): INTL_IDNA_VARIANT_2003 is deprecated
   * solve:
+  * https://github.com/egulias/EmailValidator/blob/master/EmailValidator/Validation/DNSCheckValidation.php
   * $res1 = idn_to_ascii($domain, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46, $idna_info);
     
 * 项目中用到memcache扩展全部改为memcached
