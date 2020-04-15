@@ -2,8 +2,8 @@
     * 如果需要将 » Xdebug 扩展和 OPcache 一起使用，必须在 Xdebug 扩展之前加载 OPcache 扩展。
 
 # 清理opcache
-    * http://gordalina.github.io/cachetool/
-    * https://github.com/PeeHaa/OpCacheGUI
+ - http://gordalina.github.io/cachetool/
+ - https://github.com/PeeHaa/OpCacheGUI
     
     * cachetool
         * $ curl -sO http://gordalina.github.io/cachetool/downloads/cachetool.phar
