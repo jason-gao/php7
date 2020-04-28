@@ -14,3 +14,15 @@
     * vim /usr/local/etc/php/7.2/php.ini
     * extension=mysql.so
     * php -m
+    
+# memcache
+	wget -c https://github.com/websupport-sk/pecl-memcache/archive/NON_BLOCKING_IO_php7.zip
+	unzip NON_BLOCKING_IO_php7.zip
+	cd pecl-memcache-NON_BLOCKING_IO_php7/
+	/usr/local/php7.2.1/bin/phpize
+	./configure --with-php-config=/usr/local/Cellar/php\@7.2/7.2.19/bin/php-config --with-zlib-dir=/usr/local/opt/zlib/
+	make -j 2
+	make install
+	vim /usr/local/etc/php/7.2/php.ini
+	extension=memcache.so
+	php -m
